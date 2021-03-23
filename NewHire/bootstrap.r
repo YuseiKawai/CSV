@@ -26,3 +26,5 @@ th_hist <- function(x) {
 }
 
 th_hist(mean_boot)
+
+修了 !
