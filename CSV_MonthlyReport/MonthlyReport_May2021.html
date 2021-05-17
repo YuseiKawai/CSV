@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>CSV_Monthly_Report</title>
+    <style>
+      code {
+        white-space: pre-wrap;
+      }
+      span.smallcaps {
+        font-variant: small-caps;
+      }
+      span.underline {
+        text-decoration: underline;
+      }
+      div.column {
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+      }
+      div.hanging-indent {
+        margin-left: 1.5em;
+        text-indent: -1.5em;
+      }
+      ul.task-list {
+        list-style: none;
+      }
+      .display.math {
+        display: block;
+        text-align: center;
+        margin: 0.5rem auto;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="data:text/css,body%7B%0Abackground%2Dcolor%3A%20white%3B%0Acolor%3A%20rgb%28100%2C%20100%2C%20100%29%3B%0Afont%2Dfamily%3A%20sans%2Dserif%3B%0Afont%2Dsize%3A%2018px%3B%0Awidth%3A%2060%25%3B%0Amargin%2Dright%3A%20auto%3B%0Amargin%2Dleft%3A%20auto%3B%0A%7D%0A%2Etab%20%7B%0Awidth%3A%20fit%2Dcontent%3B%0A%7D%0A%2Etab%2Dnav%20%7B%0Adisplay%3A%20flex%3B%0A%7D%0A%2Etab%2Dnav%2Ditem%20%7B%0Abackground%2Dcolor%3A%20rgb%28230%2C%20230%2C%20230%29%3B%0Acolor%3A%20gray%3B%0Apadding%3A%2010px%2020px%3B%0Atext%2Ddecoration%3A%20none%3B%0Aborder%2Dradius%3A%205px%205px%200%200%3B%0Amargin%2Dright%3A%205px%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Etab%2Dnav%2Ditem%2Eis%2Dactive%20%7B%0Abackground%2Dcolor%3A%20%2389b8c2%3B%0Acolor%3A%20%23fff%3B%0A%7D%0A%2Etab%2Dcontents%20%7B%0Abackground%2Dcolor%3A%20whitesmoke%3B%0Apadding%3A%2020px%3B%0Acolor%3A%20gray%3B%0Awidth%3A%20100%25%3B%0Aborder%2Dradius%3A%205px%205px%200%200%20%3B%0A%7D%0A%2Etab%2Dcontents%2Ditem%20%7B%0Adisplay%3A%20none%3B%0A%7D%0A%2Edate%2Eauthor%7B%0Afont%2Dsize%3A%2025px%3B%0A%7D%0A%2Edate%7B%0Apadding%2Dbottom%3A%2020px%3B%0A%7D%0A%2Etitle%20%7B%0Abackground%2Dcolor%3A%20rgb%28240%2C%20240%2C%20240%29%3B%0Aposition%3A%20relative%3B%0Atext%2Dalign%3A%20center%3B%0Amargin%2Dbottom%3A%202em%3B%0Apadding%2Dleft%3A%2030px%3B%0Apadding%2Dbottom%3A%2010px%3B%0Apadding%2Dtop%3A%2010px%3B%0Aborder%2Dradius%3A%2010px%3B%0Acolor%3A%20rgb%28100%2C%20100%2C%20100%29%3B%0Afont%2Dweight%3A%20500%3B%0Abox%2Dshadow%3A%0A0%201%2E9px%202%2E5px%20rgba%280%2C%200%2C%200%2C%200%2E057%29%2C%0A0%205px%206%2E1px%20rgba%280%2C%200%2C%200%2C%200%2E076%29%2C%0A0%2010%2E1px%2011%2E4px%20rgba%280%2C%200%2C%200%2C%200%2E086%29%2C%0A0%2019%2E2px%2019%2E8px%20rgba%280%2C%200%2C%200%2C%200%2E092%29%2C%0A0%2038%2E4px%2034%2E8px%20rgba%280%2C%200%2C%200%2C%200%2E1%29%2C%0A0%20101px%2074px%20rgba%280%2C%200%2C%200%2C%200%2E13%29%3B%0A%7D%0A%2Esub%2Dtitle%7B%0Atext%2Dalign%3A%20right%3B%0A%7D%0Ah1%7B%0Acounter%2Dreset%3A%20chapter%3B%0Amargin%2Dbottom%3A%202em%3B%0Afont%2Dsize%3A%2028px%3B%0A%7D%0Ah2%20%7B%0Acounter%2Dreset%3A%20sub%2Dchapter%3B%0Acolor%3A%20%2389b8c2%3B%0Afont%2Dsize%3A%2024px%3B%0Aborder%2Dbottom%3A%20solid%201px%20rgb%28200%2C%20200%2C%20200%29%3B%0Amargin%2Dtop%3A%202em%3B%0Afont%2Dweight%3A%20700%3B%0A%7D%0Ah3%7B%0Acounter%2Dreset%3A%20section%3B%0Acolor%3Agray%3B%0Afont%2Dsize%3A%2020px%3B%0Amargin%3A%201%2E3em%200em%200%2E7em%3B%0Amargin%2Dtop%3A%202em%3B%0A%7D%0Ah4%2C%20h5%2C%20h6%20%7B%0Acolor%3Agray%3B%0Afont%2Dsize%3A%2020px%3B%0Amargin%3A%201%2E3em%200em%200%2E7em%3B%0Amargin%2Dtop%3A%202em%3B%0A%7D%0Ah2%3A%3Abefore%20%7B%0Acounter%2Dincrement%3A%20chapter%3B%0Acontent%3A%20counter%28chapter%29%20%22%2E%20%22%3B%0A%7D%0Ah3%3A%3Abefore%20%7B%0Acounter%2Dincrement%3A%20sub%2Dchapter%3B%0Acontent%3A%20counter%28chapter%29%20%22%2E%22%20counter%28sub%2Dchapter%29%20%22%2E%20%22%3B%0A%7D%0Ah4%3A%3Abefore%20%7B%0Acounter%2Dincrement%3A%20section%3B%0Acontent%3A%20%22%28%22counter%28section%29%22%29%20%22%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20whitesmoke%3B%0Acolor%3A%20%23e2a478%3B%0A%7D%0Atable%7B%0Atable%2Dlayout%3A%20fixed%3B%0Awidth%3A%20100%25%3B%0A%7D%0Atable%20th%20%7B%0Abackground%2Dcolor%3A%23a2d3df8a%3B%0Acolor%3A%20rgb%28100%2C%20100%2C%20100%29%3B%0A%7D%0Aol%20%7B%0Apadding%3A%203px%20%3B%0Apadding%2Dleft%3A%2020px%3B%0Amargin%2Dbottom%3A%200em%3B%0A%2F%2Fborder%3A%20black%20solid%201px%0A%7D%0Ali%20%7B%0Apadding%3A%202px%205px%3B%0Amargin%3A%200px%201em%3B%0A%2F%2Fborder%3A%20hotpink%201px%20solid%3B%0A%7D%0Aul%20%7B%0Apadding%3A%203px%200%3B%0A%2F%2Fborder%3A%20green%20solid%201px%3B%0Amargin%2Dtop%3A%201px%3B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0Aimg%20%7B%0Amargin%2Dtop%3A%201%2E5em%3B%0A%7D"
+    />
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="title-block-header">
+      <h1 class="title">CSV_Monthly_Report</h1>
+    </header>
+    <div id="js-tab" class="tab">
+      <div class="sub-title">
+        <p>
+          ▸ author ◂ <br />YuseiKawai / AsakoHorie <br /><br />
+          ▸ update ◂ <br />2021-05-17
+        </p>
+      </div>
+      <div class="tab-nav">
+        <p>
+          <a href class="tab-nav-item" data-nav="0">DocumentManagement</a>
+          <a href class="tab-nav-item" data-nav="1">SAP/WMS</a>
+          <a href class="tab-nav-item" data-nav="2">e-Learning</a>
+          <a href class="tab-nav-item" data-nav="3">Safety</a>
+        </p>
+      </div>
+      <div class="tab-contents">
+        <section id="may-2021" class="tab-contents-item" data-content="0">
+          <h1>May 2021</h1>
+          <h2 id="overview-milestone">Overview &amp; Milestone</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.notion.so/00513390afe14f8d9f1a37848c031f02?v=332697ab305e49b5a0edd3d8a1b8cdfc"
+                >リンク先WBS参照</a
+              >
+            </li>
+          </ul>
+          <h2 id="heighlight">Heighlight</h2>
+          <ul>
+            <li>Virjeの1回目検証終了。</li>
+            <li>PermaDocの公式デモンストレーション終了。</li>
+            <li>Qualio用検証プロトコル改定とベンダー共有</li>
+            <li>調達管理のための帳票作成開始</li>
+          </ul>
+          <h2 id="milestone">Milestone</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.notion.so/00513390afe14f8d9f1a37848c031f02?v=332697ab305e49b5a0edd3d8a1b8cdfc"
+                >リンク先WBS参照</a
+              >
+            </li>
+          </ul>
+          <h2 id="risk-concerns">Risk &amp; Concerns</h2>
+          <ul>
+            <li>CSV実施要領参照</li>
+          </ul>
+          <h2 id="来月の予定">来月の予定</h2>
+          <ul>
+            <li>Agatha詳細デモンストレーション実施</li>
+            <li>Qualio詳細デモンストレーション実施</li>
+            <li>PermaDoc / Agatha / Qualio1回目検証実施</li>
+          </ul>
+        </section>
+        <section id="may-2021-1" class="tab-contents-item" data-content="1">
+          <h1>May 2021</h1>
+          <h2 id="overview-milestone-1">Overview &amp; Milestone</h2>
+          <ul>
+            <li>CSVマスタープラン「c.実施機関」のセッション参照。</li>
+          </ul>
+          <h2 id="heighlight-1">Heighlight</h2>
+          <ul>
+            <li>UATの実施方法についてKiSCOのQAと協議。</li>
+            <li>
+              UAT開始のためのキックオフ実施。<br />タイムライン、成果物、推進体制をメンバーへ共有。
+            </li>
+            <li>
+              QA高嶋さん/田中さんへRDN臨床試験サンプルをスコープとしたUATの依頼。
+            </li>
+          </ul>
+          <h2 id="milestone-1">Milestone</h2>
+          <ul>
+            <li>CSVマスタープラン「c.実施機関」のセッション参照。</li>
+          </ul>
+          <h2 id="risk-concerns-1">Risk &amp; Concerns</h2>
+          <ul>
+            <li>6月実施予定のUATまでにテスト計画書が構築できない。</li>
+          </ul>
+          <h2 id="来月の予定-1">来月の予定</h2>
+          <ul>
+            <li>マスタープラン、実施要領、要件定義書の承認回覧。</li>
+            <li>UATの定期的な進捗確認、青果物レビュー</li>
+          </ul>
+        </section>
+        <section id="may-2021-2" class="tab-contents-item" data-content="2">
+          <h1>May 2021</h1>
+          <h2 id="overview-milestone-2">Overview &amp; Milestone</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.notion.so/60cbfdfcf0d04703890693efe5c8ca43?v=98acbc6ce2024e69a172570f4662de21"
+                >リンク先WMS参照</a
+              >
+            </li>
+          </ul>
+          <h2 id="heighlight-2">Heighlight</h2>
+          <ul>
+            <li>各部門との意見交換結果を検証</li>
+            <li>
+              現在実施されているトレーニングを種別、実施プラットフォームごとに分類
+            </li>
+            <li>調達管理帳票の作成</li>
+            <li>稟議書作成と提出</li>
+          </ul>
+          <h2 id="milestone-2">Milestone</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.notion.so/60cbfdfcf0d04703890693efe5c8ca43?v=98acbc6ce2024e69a172570f4662de21"
+                >リンク先WMS参照</a
+              >
+            </li>
+          </ul>
+          <h2 id="risk-concerns-2">Risk &amp; Concerns</h2>
+          <ul>
+            <li>CSV実施要領参照</li>
+          </ul>
+          <h2 id="来月の予定-2">来月の予定</h2>
+          <ul>
+            <li>トレーニング記録の管理方法協議</li>
+            <li>今後のQMSトレーニングの展望協議</li>
+            <li>システム導入時期の仮決定</li>
+          </ul>
+        </section>
+        <section id="may-2021-3" class="tab-contents-item" data-content="3">
+          <h1>May 2021</h1>
+          <h2 id="overview-milestone-3">Overview &amp; Milestone</h2>
+          <ul>
+            <li><a href>VS導入フロー参照</a></li>
+          </ul>
+          <h2 id="heighlight-3">Heighlight</h2>
+          <ul>
+            <li>ITシステムのIn-Scopeを合意した。</li>
+            <li>
+              システム導入までのタイムライン、OMD関係者との情報共有方法について共有した。
+            </li>
+            <li>関連会社と共通のシステムを導入する可能性について共有した。</li>
+          </ul>
+          <h2 id="milestone-3">Milestone</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.notion.so/60cbfdfcf0d04703890693efe5c8ca43?v=98acbc6ce2024e69a172570f4662de21"
+                >リンク先WMS参照</a
+              >
+            </li>
+          </ul>
+          <h2 id="risk-concerns-3">Risk &amp; Concerns</h2>
+          <ul>
+            <li>NA</li>
+          </ul>
+          <h2 id="来月の予定-3">来月の予定</h2>
+          <ul>
+            <li>
+              Recor / Veryan / KiSCO / JIMROとシステム導入方針を決定する。
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script src="data:application/javascript;base64,KCgpID0+IHsKICAvLyDlkb3ku6TmlocKICBjb25zdCAkZG9jID0gZG9jdW1lbnQ7CiAgY29uc3QgJHRhYiA9ICRkb2MuZ2V0RWxlbWVudEJ5SWQoImpzLXRhYiIpOwogIGNvbnN0ICRuYXYgPSAkdGFiLnF1ZXJ5U2VsZWN0b3JBbGwoIltkYXRhLW5hdl0iKTsKICBjb25zdCAkY29udGVudCA9ICR0YWIucXVlcnlTZWxlY3RvckFsbCgiW2RhdGEtY29udGVudF0iKTsKICBjb25zdCBBQ1RJVkVfQ0xBU1MgPSAiaXMtYWN0aXZlIjsKCiAgLy/liJ3mnJ/ljJYKICBjb25zdCBpbml0ID0gKCkgPT4gewogICAgJGNvbnRlbnRbMF0uc3R5bGUuZGlzcGxheSA9ICJibG9jayI7CiAgfTsKICBpbml0KCk7CgogIC8v44Kv44Oq44OD44Kv44Kk44OZ44Oz44OIdQogIGNvbnN0IGhhbmRsZUNsaWNrID0gKGUpID0+IHsKICAgIGUucHJldmVudERlZmF1bHQoKTsKICAgIC8vIOOCr+ODquODg+OCr+OBleOCjOOBn25hdiDjgajjgZ3jga7jg4fjg7zjgr/jgpLlj5blvpcKICAgIGNvbnN0ICR0aGlzID0gZS50YXJnZXQ7CiAgICBjb25zdCB0YXJnZXR2YWwgPSAkdGhpcy5kYXRhc2V0Lm5hdjsKICAgIGNvbnNvbGUubG9nKCJ0YXJnZXR2YWwiLCB0YXJnZXR2YWwpOwoKICAgIC8v5a++6LGh5aSW44GubmF2IGNvbnRlbnQg44KS44Oq44K744OD44OICiAgICBsZXQgaW5kZXggPSAwOwogICAgd2hpbGUgKGluZGV4IDwgJG5hdi5sZW5ndGgpIHsKICAgICAgJGNvbnRlbnRbaW5kZXhdLnN0eWxlLmRpc3BsYXkgPSAibm9uZSI7CiAgICAgICRuYXZbaW5kZXhdLmNsYXNzTGlzdC5yZW1vdmUoQUNUSVZFX0NMQVNTKTsKICAgICAgaW5kZXgrKzsKICAgIH0KCiAgICAvL+WvvuixoeOBruOCs+ODs+ODhuODs+ODhOOCkuOCouOCr+ODhuOCo+ODluOBq+OBmeOCiwogICAgJHRhYi5xdWVyeVNlbGVjdG9yQWxsKAogICAgICAnW2RhdGEtY29udGVudCA9ICInICsgdGFyZ2V0dmFsICsgJyJdJwogICAgKVswXS5zdHlsZS5kaXNwbGF5ID0gImJsb2NrIjsKICAgICRuYXZbdGFyZ2V0dmFsXS5jbGFzc0xpc3QuYWRkKEFDVElWRV9DTEFTUyk7CiAgfTsKCiAgLy/lhahuYXYg44Gr5a++44GX44Gm6Zai5pWw44KS6YGp55SoCiAgbGV0IGluZGV4ID0gMDsKICB3aGlsZSAoaW5kZXggPCAkbmF2Lmxlbmd0aCkgewogICAgJG5hdltpbmRleF0uYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCAoZSkgPT4gaGFuZGxlQ2xpY2soZSkpOwogICAgaW5kZXgrKzsKICB9Cn0pKCk7"></script>
+  </body>
+</html>
